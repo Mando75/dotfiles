@@ -11,6 +11,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod1
+set $wallpaper_path /home/mando0975/.config/i3/wallpaper/shelter-2.png
 
 ### APPEARENCE ###
 #
@@ -28,7 +29,7 @@ new_window 1pixel
 hide_edge_borders smart
 
 # Wallpapers
-exec --no-startup-id feh --bg-fill ~/Pictures/backgrounds/Active\ Wallpapers/shelter-2.png
+exec_always --no-startup-id feh --bg-fill $wallpaper_path 
 
 #              border     background   text       indicator    child_border
 client.focused  #2E3440    #3B4252      #d8dee9   #5E81ac      #2E3440
@@ -199,12 +200,10 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
+
 # Lock i3
-# Lock Directly
-#bindsym $mod+Shift+p exec "/home/mando0975/.config/i3/i3lock-multimonitor/lock && sleep 5 && systemctl suspend"
-# Rofi powermenu
-bindsym $mod+Shift+p exec "/home/mando0975/.config/rofi/bin/powermenu"
+bindsym $mod+Shift+p exec $HOME/.config/i3/multi-monitor-lock -i $wallpaper_path && sleep 2 && systemctl suspend
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
