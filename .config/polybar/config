@@ -1,8 +1,15 @@
 [colors]
+; OLD
 martinique = #3B344D
 light-orchid = #E6AFD4
 we-peep = #F1CAE1
 trendy-pink = #7F5F92
+; NEW
+red = #8C0D17
+maroon = #590817
+white = #F2F2F2
+black = #0D0D0D
+grey = #737373
 
 [section/style]
 width = 40%
@@ -10,11 +17,11 @@ height = 25
 offset-x = 30%
 override-redirect = true 
 wm-restack = i3
-radius = 4
+radius-bottom = 4
 fixed-center = true
 underline-size = 3
-foreground = ${colors.we-peep}
-background = ${colors.trendy-pink}
+foreground = ${colors.white}
+background = ${colors.black}
 padding-left = 2
 padding-right = 2
 module-margin-left = 0
@@ -58,7 +65,7 @@ monitor = DP-4
 tray-position = right
 tray-detached = true
 tray-maxsize = 16
-tray-background = ${colors.trendy-pink}
+tray-background = ${colors.black}
 tray-offset-x = -12
 tray-offset-y = 0
 tray-padding = 0
@@ -85,30 +92,28 @@ ws-icon-3 = 4; 4
 ws-icon-4 = 5; 5
 ws-icon-5 = 6; 6
 ws-icon-6 = 7; 7
+ws-icon-7 = 8; 8
+ws-icon-8 = 9; 9
 ws-icon-default = ""
 
 label-mode-padding = 1
-label-mode-foreground = ${colors.we-peep}
-label-mode-background = ${colors.trendy-pink}
 
 label-focused = %icon% 
-label-focused-background = ${colors.trendy-pink}
-label-focused-foreground = ${colors.we-peep}
-label-focused-underline = ${colors.martinique}
+label-focused-background = ${colors.white}
+label-focused-foreground = ${colors.black}
+label-focused-underline = ${colors.red}
 label-focused-padding = 2
 
 label-unfocused = %icon%
 label-unfocused-padding = 2
-label-unfocused-foreground = ${colors.we-peep}
 
 label-visible = %icon%
-label-visible-background = ${colors.trendy-pink}
-label-visible-underline = ${colors.martinique}
 label-visible-padding = 2
 
 label-urgent = %icon%
-label-urgent-background = ${colors.light-orchid}
-label-urgent-foreground = ${colors.trendy-pink}
+label-urgent-background = ${colors.red}
+label-urgent-foreground = ${colors.white}
+label-urgent-underline = ${colors.black}
 label-urgent-padding = 2
 
 ;;;;;;;;;;;;;;;;;;;
@@ -125,8 +130,8 @@ date = "%d %b %Y"
 time = %H:%M
 time-alt = %H:%M
 
-format =   <label>
-format-prefix-foreground = ${colors.martinique}
+format = <label>
+;format-prefix-foreground = ${colors.black}
 
 label =  %date% %time%
 
@@ -165,11 +170,8 @@ format-spacing = 1
 
 ; Polybar Menu
 label-open = 
-label-open-foreground = ${colors.we-peep}
 label-close =   Cancel
-label-close-foreground = ${colors.we-peep}
 label-separator = |
-label-separator-foreground = ${colors.we-peep}
 
 menu-0-0 =   Reboot
 menu-0-0-exec = reboot
@@ -177,34 +179,6 @@ menu-0-1 =   Shutdown
 menu-0-1-exec = shutdown -h now 
 
 
-;;;;;;;;;;;;;;;;;;;;;;
-;CPU
-;;;;;;;;;;;;;;;;;;;;;
-[module/cpu]
-type = internal/cpu
-
-; Seconds to sleep between updates
-; Default: 1
-interval = 0.5
-label =  %percentage%%
-format-background = ${colors.trendy-pink}
-format-foreground = ${colors.we-peep}
-format-padding = 2
-
-
-;;;;;;;;;;;;;;;;;;;;;;
-;RAM
-;;;;;;;;;;;;;;;;;;;;;;
-[module/memory]
-type = internal/memory
-
-; Seconds to sleep between updates
-; Default: 1
-interval = 3
-label =  %gb_used%/%gb_free%
-format-background = ${colors.trendy-pink}
-format-foreground = ${colors.we-peep}
-format-padding = 2
 
 ;;;;;;;;;;;;;;;;;;;;;
 ; SPOTIFY
@@ -215,7 +189,7 @@ interval = 1
 format-prefix = " "
 format = <label>
 exec = python /usr/share/polybar/scripts/spotify_status.py -f '{song}'
-format-underline = ${colors.martinique}
+format-underline = ${colors.red}
 
 
 [settings]
