@@ -1,0 +1,4 @@
+clear Lock
+keycode 66 = Escape
+
+keysym Alt_L = Alt_L Meta_L

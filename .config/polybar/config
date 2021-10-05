@@ -1,0 +1,227 @@
+[colors]
+martinique = #3B344D
+light-orchid = #E6AFD4
+we-peep = #F1CAE1
+trendy-pink = #7F5F92
+
+[section/style]
+width = 40%
+height = 25
+offset-x = 30%
+override-redirect = true 
+wm-restack = i3
+radius = 4
+fixed-center = true
+underline-size = 3
+foreground = ${colors.we-peep}
+background = ${colors.trendy-pink}
+padding-left = 2
+padding-right = 2
+module-margin-left = 0
+module-margin-right = 2
+
+font-0 = JetBrains Mono:pixelsize=11
+font-1 = FontAwesome:pixelsize=10;0
+font-2 = unifont:fontformat=truetype:size=9:antialias=false;0
+font-4 = Roboto:style=Regular:pixelsize=12;0
+
+
+;;;;;;;;;;;;;;;;;
+; HDMI MONITOR 
+;;;;;;;;;;;;;;;;;
+[bar/hdmi-center]
+inherit = section/style
+monitor = HDMI-0
+
+modules-left = i3
+modules-center = date
+modules-right = spotify
+
+;;;;;;;;;;;;;;;;;;
+; DISPLAY PORT RIGHT
+;;;;;;;;;;;;;;;;;;
+[bar/dp-center]
+inherit = section/style
+monitor = DP-2
+
+modules-left = i3
+modules-center = date
+modules-right = powermenu
+
+;;;;;;;;;;;;;;;;;;;
+; DISPLAY PORT TOP
+;;;;;;;;;;;;;;;;;;;
+[bar/dp-top]
+inherit = section/style
+monitor = DP-4
+
+tray-position = right
+tray-detached = true
+tray-maxsize = 16
+tray-background = ${colors.trendy-pink}
+tray-offset-x = -12
+tray-offset-y = 0
+tray-padding = 0
+tray-scale = 1.0
+
+
+modules-left = i3
+modules-center = date
+
+;;;;;;;;;;;;;;;;;
+; i3
+; ;;;;;;;;;;;;;;;
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+ws-icon-0 = 1; 1
+ws-icon-1 = 2; 2
+ws-icon-2 = 3; 3
+ws-icon-3 = 4; 4
+ws-icon-4 = 5; 5
+ws-icon-5 = 6; 6
+ws-icon-6 = 7; 7
+ws-icon-default = ""
+
+label-mode-padding = 1
+label-mode-foreground = ${colors.we-peep}
+label-mode-background = ${colors.trendy-pink}
+
+label-focused = %icon% 
+label-focused-background = ${colors.trendy-pink}
+label-focused-foreground = ${colors.we-peep}
+label-focused-underline = ${colors.martinique}
+label-focused-padding = 2
+
+label-unfocused = %icon%
+label-unfocused-padding = 2
+label-unfocused-foreground = ${colors.we-peep}
+
+label-visible = %icon%
+label-visible-background = ${colors.trendy-pink}
+label-visible-underline = ${colors.martinique}
+label-visible-padding = 2
+
+label-urgent = %icon%
+label-urgent-background = ${colors.light-orchid}
+label-urgent-foreground = ${colors.trendy-pink}
+label-urgent-padding = 2
+
+;;;;;;;;;;;;;;;;;;;
+;DATE
+;;;;;;;;;;;;;;;;;;
+[module/date]
+type = internal/date
+interval = 1
+
+date = "%d %b %Y"
+
+;time = %l:%M %p
+;time-alt = %l:%M %p
+time = %H:%M
+time-alt = %H:%M
+
+format =   <label>
+format-prefix-foreground = ${colors.martinique}
+
+label =  %date% %time%
+
+;;;;;;;;;;;;;;;;;;;;
+;AUDIO CONTROL
+;;;;;;;;;;;;;;;;;;;;
+[module/pulseaudio]
+type = internal/pulseaudio
+
+sink = alsa_output.usb-FiiO_DigiHug_USB_Audio-01.analog-stereo
+
+use-ui-max = true
+
+interval = 1
+format-volume = <ramp-volume> <label-volume>
+
+label-muted =  muted
+label-muted-foreground = #666
+format-padding = 2
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+;;;;;;;;;;;;;;;;;;;;
+;POWER MENU
+;;;;;;;;;;;;;;;;;;;
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+; Rofi powermenu
+;label-open = %{A1:/home/mando0975/.config/rofi/bin/powermenu:}%{A}
+;menu-0-0 = 
+;menu-0-0-exec = /home/mando0975/.config/rofi/bin/powermenu
+
+; Polybar Menu
+label-open = 
+label-open-foreground = ${colors.we-peep}
+label-close =   Cancel
+label-close-foreground = ${colors.we-peep}
+label-separator = |
+label-separator-foreground = ${colors.we-peep}
+
+menu-0-0 =   Reboot
+menu-0-0-exec = reboot
+menu-0-1 =   Shutdown
+menu-0-1-exec = shutdown -h now 
+
+
+;;;;;;;;;;;;;;;;;;;;;;
+;CPU
+;;;;;;;;;;;;;;;;;;;;;
+[module/cpu]
+type = internal/cpu
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+label =  %percentage%%
+format-background = ${colors.trendy-pink}
+format-foreground = ${colors.we-peep}
+format-padding = 2
+
+
+;;;;;;;;;;;;;;;;;;;;;;
+;RAM
+;;;;;;;;;;;;;;;;;;;;;;
+[module/memory]
+type = internal/memory
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 3
+label =  %gb_used%/%gb_free%
+format-background = ${colors.trendy-pink}
+format-foreground = ${colors.we-peep}
+format-padding = 2
+
+;;;;;;;;;;;;;;;;;;;;;
+; SPOTIFY
+;;;;;;;;;;;;;;;;;;;;;
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = " "
+format = <label>
+exec = python /usr/share/polybar/scripts/spotify_status.py -f '{song}'
+format-underline = ${colors.martinique}
+
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+wm-restack = i3
+
+; vim:ft=dosini
