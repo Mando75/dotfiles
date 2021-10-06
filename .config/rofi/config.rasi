@@ -5,4 +5,4 @@ configuration {
   icon-theme:         "Papirus";
   modi: "drun,window,calc,ssh";
 }
-@theme "~/.config/rofi/purple.rasi"
+@theme "~/.config/rofi/mikasa.rasi"
