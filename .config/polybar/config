@@ -174,7 +174,7 @@ label-close =   Cancel
 label-separator = |
 
 menu-0-0 =   Reboot
-menu-0-0-exec = reboot
+menu-0-0-exec = shutdown -r now 
 menu-0-1 =   Shutdown
 menu-0-1-exec = shutdown -h now 
 

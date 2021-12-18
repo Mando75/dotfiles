@@ -98,3 +98,6 @@ eval "$(dircolors -b ~/.dircolors)"
 alias gacm="git add . && git commit -m"
 alias ls="ls --color=auto"
 alias kyb="xmodmap ~/.Xmodmap"
+
+
+source /usr/share/nvm/init-nvm.sh

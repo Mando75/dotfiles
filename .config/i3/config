@@ -40,11 +40,7 @@ exec --no-startup-id picom
 exec_always --no-startup-id xmodmap ~/.Xmodmap
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-exec --no-startup-id glava --desktop &
-
-exec --no-startup-id mullvad-vpn &
-
-exec --no-startup-id udiskie &
+exec --no-startup-id udiskie -ANt &
 
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
