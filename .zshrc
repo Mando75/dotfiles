@@ -102,5 +102,4 @@ alias gacm="git add . && git commit -m"
 alias ls="ls --color=auto"
 alias kyb="xmodmap ~/.Xmodmap"
 
-
-source /usr/share/nvm/init-nvm.sh
+eval "$(fnm env --use-on-cd)"
